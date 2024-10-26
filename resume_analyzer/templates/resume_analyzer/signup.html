@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div class="max-w-md w-full bg-white shadow-lg rounded-lg p-8">
+        <h2 class="text-2xl font-bold mb-8 text-center text-gray-800">Create an Account</h2>
+        <form method="POST" action="{% url 'signup' %}" class="space-y-6">
+            {% csrf_token %}
+            
+            <!-- Username Field -->
+            <div class="space-y-2">
+                <label class="block text-sm font-medium text-gray-700" for="{{ form.username.id_for_label }}">
+                    Username
+                </label>
+                <div class="mt-1">
+                    {{ form.username }}
+                </div>
+                {% if form.username.errors %}
+                <p class="mt-1 text-sm text-red-600">{{ form.username.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Email Field -->
+            <div class="space-y-2">
+                <label class="block text-sm font-medium text-gray-700" for="{{ form.email.id_for_label }}">
+                    Email
+                </label>
+                <div class="mt-1">
+                    {{ form.email }}
+                </div>
+                {% if form.email.errors %}
+                <p class="mt-1 text-sm text-red-600">{{ form.email.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Password Field -->
+            <div class="space-y-2">
+                <label class="block text-sm font-medium text-gray-700" for="{{ form.password1.id_for_label }}">
+                    Password
+                </label>
+                <div class="mt-1">
+                    {{ form.password1 }}
+                </div>
+                {% if form.password1.errors %}
+                <p class="mt-1 text-sm text-red-600">{{ form.password1.errors.0 }}</p>
+                {% endif %}
+                {% if form.password1.help_text %}
+                <p class="mt-1 text-xs text-gray-500">{{ form.password1.help_text|safe }}</p>
+                {% endif %}
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="space-y-2">
+                <label class="block text-sm font-medium text-gray-700" for="{{ form.password2.id_for_label }}">
+                    Confirm Password
+                </label>
+                <div class="mt-1">
+                    {{ form.password2 }}
+                </div>
+                {% if form.password2.errors %}
+                <p class="mt-1 text-sm text-red-600">{{ form.password2.errors.0 }}</p>
+                {% endif %}
+            </div>
+
+            <div class="mt-8">
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-md transition duration-150 ease-in-out shadow-sm hover:shadow">
+                    Sign Up
+                </button>
+            </div>
+        </form>
+        <p class="mt-6 text-center text-sm text-gray-600">
+            Already have an account? 
+            <a href="{% url 'signin' %}" class="text-blue-500 hover:text-blue-600 font-medium">
+                Sign in
+            </a>
+        </p>
+    </div>
+</body>
+</html>
