@@ -16,7 +16,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Gemini API Configuration
-GEMINI_API_KEY = 'AIzaSyCbiC3XbLpSkjrQYXCGtOvq3_NJWtEF1Z4'  # Apna API key yahan paste karein
+GEMINI_API_KEY = 'Enter your API key' 
 
 # Application definition
 INSTALLED_APPS = [
