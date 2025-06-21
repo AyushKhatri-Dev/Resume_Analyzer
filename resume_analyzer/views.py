@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Resume
 from .forms import SignUpForm, SignInForm
 from django.contrib import messages
-from .utils import analyze_resume  # Import the analyze_resume function
+from .utils import analyze_resume  
 
 
 def upload_resume(request):
