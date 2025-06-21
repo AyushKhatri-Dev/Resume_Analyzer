@@ -4,7 +4,7 @@ from PyPDF2 import PdfReader
 from docx import Document
 
 def analyze_resume(file_path, job_role):
-    print("Inside analyze_resume function")  # Confirm function call
+    print("Inside analyze_resume function")  
     genai.configure(api_key=settings.GEMINI_API_KEY)
     model = genai.GenerativeModel('gemini-pro')
 
@@ -14,13 +14,13 @@ def analyze_resume(file_path, job_role):
         text = ""
         for page in reader.pages:
             text += page.extract_text()
-        print("PDF content length:", len(text))  # Debug statement
+        print("PDF content length:", len(text))  
     elif file_path.endswith('.docx'):
         doc = Document(file_path)
         text = "\n".join([paragraph.text for paragraph in doc.paragraphs])
-        print("DOCX content length:", len(text))  # Debug statement
+        print("DOCX content length:", len(text))  
     else:
-        print("Unsupported file format")  # Debug statement for unsupported format
+        print("Unsupported file format")  
         return "Unsupported file format"
 
     # Gemini analysis ke liye prompt
